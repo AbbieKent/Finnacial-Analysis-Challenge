@@ -41,6 +41,16 @@ with open(voting_file) as csvfile:
     winning=max(votes_per_candidate)
     index=votes_per_candidate.index(winning)
     winner=candidates_list[index]
+print('Election Results')
+print('-------------------------')
+print(f'Total Votes:{total_votes}')
+print('-------------------------')
+print (f'{candidates_list[0]}: {percent_vote[0]}, {votes_per_candidate[0]}')
+print (f'{candidates_list[1]}: {percent_vote[1]}, {votes_per_candidate[1]}')
+print (f'{candidates_list[2]}: {percent_vote[2]}, {votes_per_candidate[2]}')
+print (f'{candidates_list[3]}: {percent_vote[3]}, {votes_per_candidate[3]}')
+print('-------------------------')
+print(f'Winner:{winner}')
 output= os.path.join("Analysis","Election Results")
 with open(output,'w') as output_file:
     output_file.write('Election Results')
@@ -57,11 +67,7 @@ with open(output,'w') as output_file:
     output_file.write('-------------------------')
     output_file.write('\n')
     output_file.write(f'Winner:{winner}')
-# print (f'{candidates_list[0]}: {percent_vote[0]}, {votes_per_candidate[0]}')
-# print (f'{candidates_list[1]}: {percent_vote[1]}, {votes_per_candidate[1]}')
-# print (f'{candidates_list[2]}: {percent_vote[2]}, {votes_per_candidate[2]}')
-# print (f'{candidates_list[3]}: {percent_vote[3]}, {votes_per_candidate[3]}')
-# output.write()
+
 
 
 
