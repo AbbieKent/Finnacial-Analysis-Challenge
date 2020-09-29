@@ -38,14 +38,25 @@ with open(voting_file) as csvfile:
         percent=((x/total_votes))
         percent= "{:.2%}".format(percent)
         percent_vote.append(percent)
-
-output = open("output.txt", "w")
-print(f'Election Results')
-print (f'Total votes: {total_votes}')
-for i in range((len(candidates_list))):
-    output= (f'{candidates_list[i]}:{percent_vote[i]},{votes_per_candidate[i]}')
-    output.write('{}\n'.format(output))
-
+    winning=max(votes_per_candidate)
+    index=votes_per_candidate.index(winning)
+    winner=candidates_list[index]
+output= os.path.join("Analysis","Election Results")
+with open(output,'w') as output_file:
+    output_file.write('Election Results')
+    output_file.write('\n')
+    output_file.write('-------------------------')
+    output_file.write('\n')
+    output_file.write(f'Total Votes:{total_votes}')
+    output_file.write('-------------------------')
+    output_file.write('\n')
+    for i in range((len(candidates_list))):
+        output= (f'{candidates_list[i]}:{percent_vote[i]},({votes_per_candidate[i]})')
+        output_file.write(output)
+        output_file.write('\n')
+    output_file.write('-------------------------')
+    output_file.write('\n')
+    output_file.write(f'Winner:{winner}')
 # print (f'{candidates_list[0]}: {percent_vote[0]}, {votes_per_candidate[0]}')
 # print (f'{candidates_list[1]}: {percent_vote[1]}, {votes_per_candidate[1]}')
 # print (f'{candidates_list[2]}: {percent_vote[2]}, {votes_per_candidate[2]}')
